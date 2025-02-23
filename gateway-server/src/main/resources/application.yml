@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: "gateway-server"
   cloud:
@@ -22,7 +24,7 @@ spring:
               - "Path=/api/v1/products/**"
 
 server:
-  port: 8085
+  port: 8090
 
 eureka:
   client:

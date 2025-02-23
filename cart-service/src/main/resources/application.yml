@@ -1,7 +1,22 @@
 spring:
   application:
     name: "cart-service"
-
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost:27017/cart-service?authSource=admin
+  cloud:
+    stream:
+      defaultBinder: kafka
+      function:
+        definition: orderCreatedFunction
+      bindings:
+        orderCreatedFunction-in-0:
+          destination: order-topic
+          content-type: application/json
+          group: cart-group
+      kafka:
+        binder:
+          brokers: localhost:9092
 server:
   port: 8082
 
